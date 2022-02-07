@@ -2,7 +2,7 @@
 
 To run the development server:
 
-Running demo [https://carro-take-home-test.vercel.app/]()  
+Running demo [https://carro-take-home-test.vercel.app/](https://carro-take-home-test.vercel.app/)  
 
 Install dependencies
 ```bash
