@@ -1,0 +1,45 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #fafafa;
+  font-family: 'Poppins', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+div {
+  animation: fadePopAnimation 200ms ease-in-out;
+}
+
+@keyframes fadePopAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #ffffff00;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(218, 226, 253);
+  border-radius: 1000px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(191, 206, 255);
+} 

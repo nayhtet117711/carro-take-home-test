@@ -1,0 +1,140 @@
+@import 'variables';
+
+.filterContainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    box-shadow: 0px 1px 4px $shadowColor;
+    border-radius: 1000px;
+    z-index: 2;
+    .search {
+        height: 2rem;
+        min-width: 10rem;
+        padding: 0.2rem 1rem;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        background-color: $backgroundColor;
+        border-top-left-radius: 1000px;
+        border-bottom-left-radius: 1000px;
+        input {
+            width: 100%;
+            height: 100%;
+            font-size: 0.9rem;
+            outline: none;
+            border: none;
+            color: $textColor;
+        }
+    }
+    .menu {
+        height: 2rem;
+        min-width: 6rem;
+        max-width: 8rem;
+        position: relative;
+        .menuItem {
+            width: 100%;
+            height: 100%;
+            padding-left: 0.5rem;
+            padding-right: 0.3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: $textLightColor;
+            background-color: $backgroundColor;
+            cursor: pointer;
+            div {
+                flex-grow: 1;
+                text-align: center;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            div.icon {
+                color: $iconLightColor;
+                min-width: 1.5rem;
+            }
+            &:hover {
+                background-color: $hoverColor;
+            }
+            &::before {
+                content: "";
+                display: inline-block;
+                position: absolute;
+                left: 0px;
+                width: 1px;
+                height: 100%;
+                background-color: $dividerColor;
+            }
+        }
+        &:last-child {
+            .menuItem {
+                border-top-right-radius: 1000px;
+                border-bottom-right-radius: 1000px;
+            }
+        }
+        .dropdown {
+            position: absolute;
+            background-color: $backgroundColor;
+            min-width: 100%;
+            // max-width: 200%;
+            max-height: 0rem;
+            opacity: 0;
+            overflow-y: auto;
+            left: 1px; top: 2.05rem;
+            box-shadow: 0px 2px 4px $shadowColor;
+            transition: max-height 200ms ease-in-out, opacity 200ms ease-in-out;
+            .option {
+                text-align: left;
+                padding: 0.5rem 1rem;
+                cursor: pointer;
+                font-size: 0.9rem;
+                color: $textColor;
+                white-space: nowrap;
+                background-color: $backgroundColor;
+                &:hover {
+                    background-color: $hoverColor;
+                }
+            }
+        }
+        &:hover {
+            .dropdown {
+                max-height: 20rem;
+                opacity: 1;
+            }
+        }
+        .dropdown.hide {
+            max-height: 0rem;
+        }
+    }
+}
+
+@media screen and (max-width: $sm) {
+    .filterContainer {
+        grid-template-columns: auto auto auto;
+        gap: 1rem 1rem;
+        box-shadow: none;
+        width: 80%;
+        .search {
+            grid-column: 1 / 4;
+            border-radius: 1000px;
+            box-shadow: 0px 1px 4px $shadowColor;
+        }
+        .menu {
+            max-width: none;
+            .menuItem {
+                border-radius: 1000px;
+                box-shadow: 0px 1px 4px $shadowColor;
+                &::before {
+                    content: none;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $xs) {
+    .filterContainer {
+        width: 100%;
+        gap: 1rem 0.5rem;
+    }
+}

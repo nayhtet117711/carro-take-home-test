@@ -1,0 +1,77 @@
+@import 'variables';
+
+.productCardContainer {
+  height: 29rem;
+  width: 19rem;
+  position: relative;
+  .cardBackground {
+      position: absolute;
+      left: 0px; 
+      right: 0px; 
+      bottom: 1rem;
+      top: 58%;
+      background-color: $backgroundColor;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      border-radius: 1.5rem;
+      box-shadow: 0px 2px 4px $shadowColor;
+    .cardInfo {
+      width: 100%;
+      display: grid;
+      gap: 0rem 1.5rem;
+      grid-template-columns: 1fr 1fr;
+      .title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: $textColor;
+        grid-column: 1/3;
+        text-align: center;
+      }
+      .rarity {
+        font-size: 0.9rem;
+        color: $textBlueColor;
+        grid-column: 1/3;
+        text-align: center;
+        padding-bottom: 0.3rem;
+      }
+      .setInfo {
+        font-size: 1.1rem;
+        color: $textLightColor;
+        text-align: center;
+        padding-bottom: 0.4rem;
+        text-align: left;
+        &.start {
+          text-align: right;
+        }
+      }
+    }
+    .selectCardButton {
+      width: 70%;
+      background-color: $backgroundYellowColor;
+      color: $textColor;
+      padding: 0.5rem 2rem;
+      margin-bottom: -1rem;
+      font-size: 1.1rem;
+      border-radius: 1000px;
+      box-shadow: 0px 1px 4px $shadowColor;
+      cursor: default;
+      transition: all 200ms ease-in-out;
+      &:hover {
+        background-color: $backgroundYellowColor2;
+        box-shadow: 0px 4px 8px gray;
+      }
+      &[data-selected] {
+        color: $textWhiteColor;
+        background-color: $textColor;
+      }
+    }
+  }
+  .imageContiner {
+    height: 69%;
+    position: relative;
+    margin: auto;
+    border-radius: 1rem;
+  }
+}
