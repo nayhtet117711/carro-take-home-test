@@ -30,6 +30,7 @@ const Home: NextPage<HomeProps> = (props: HomeProps) => {
   const [pageNo, setPageNo] = useState(1)
   const [moreLoading, setMoreLoading] = useState(false)
 
+  // On filters state changed, fetch cards again
   useEffect(() => {
     if(filters.name==="" && filters.type===null && filters.rarity===null && filters.set===null) return;
     fetchCards({ page: 1, pageSize: 12, ...filters })
@@ -37,6 +38,7 @@ const Home: NextPage<HomeProps> = (props: HomeProps) => {
     return () => {}
   }, [filters])
 
+  // Loadmore when pageNo state changed
   useEffect(() => {
     if(pageNo===1) return;
     setMoreLoading(true)
@@ -48,6 +50,7 @@ const Home: NextPage<HomeProps> = (props: HomeProps) => {
     return () => {}
   }, [pageNo])
 
+  // Increase count of a item in cartItems
   const handleIncreaseInCart = (cardId: String) => {
     const cartItemIndex = cartItems.findIndex(card => card.id===cardId)
     if(cartItemIndex===-1) return; 
@@ -56,6 +59,7 @@ const Home: NextPage<HomeProps> = (props: HomeProps) => {
     setCartItems(newCartItems) 
   }
 
+  // Decrease or remove count of a item in cartItems
   const handleDecreaseInCart = (cardId: String) => {
     const cartItemIndex = cartItems.findIndex(card => card.id===cardId)
     if(cartItemIndex===-1) return; 
@@ -69,6 +73,7 @@ const Home: NextPage<HomeProps> = (props: HomeProps) => {
     setCartItems(newCartItems) 
   }
 
+  // To add a card into cartItems 
   const handleAddToCart = (card: Card) => {
     const cartItemIndex = cartItems.findIndex(c => c.id===card.id)
     if(cartItemIndex>-1) return handleIncreaseInCart(card.id)
@@ -84,7 +89,8 @@ const Home: NextPage<HomeProps> = (props: HomeProps) => {
     setCartItems([...cartItems, cartItem])
   }
 
-  const clearAllInCart = (): void => {
+  // Clear cartItem array 
+  const clearAllInCart = () => {
     setCartItems([])
   }
 
